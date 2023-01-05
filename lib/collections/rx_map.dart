@@ -1,6 +1,6 @@
 part of '../rx_notifier.dart';
 
-class RxMap<K, V> extends ChangeNotifier with MapMixin<K, V> {
+class RxMap<K, V> extends ChangeNotifier with MapMixin<K, V> implements ValueListenable<Map<K, V>> {
   late final Map<K, V> _map;
 
   RxMap([Map<K, V>? map]) {
@@ -45,4 +45,7 @@ class RxMap<K, V> extends ChangeNotifier with MapMixin<K, V> {
     }
     return result;
   }
+
+  @override
+  Map<K, V> get value => this;
 }

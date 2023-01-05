@@ -1,7 +1,8 @@
 part of '../rx_notifier.dart';
 
-class RxSet<T> extends ChangeNotifier with SetMixin<T> {
+class RxSet<T> extends ChangeNotifier with SetMixin<T> implements ValueListenable<Set<T>> {
   late final Set<T> _set;
+
   RxSet([Set<T>? set]) {
     if (set != null) {
       _set = set;
@@ -56,4 +57,7 @@ class RxSet<T> extends ChangeNotifier with SetMixin<T> {
   Set<T> toSet() {
     return this;
   }
+
+  @override
+  Set<T> get value => this;
 }

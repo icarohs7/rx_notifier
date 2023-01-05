@@ -1,7 +1,8 @@
 part of '../rx_notifier.dart';
 
-class RxList<T> extends ChangeNotifier with ListMixin<T> {
+class RxList<T> extends ChangeNotifier with ListMixin<T> implements ValueListenable<List<T>> {
   late final List<T> _list;
+
   RxList([List<T>? list]) {
     if (list != null) {
       _list = list;
@@ -192,4 +193,7 @@ class RxList<T> extends ChangeNotifier with ListMixin<T> {
     _list.length = value;
     notifyListeners();
   }
+
+  @override
+  List<T> get value => this;
 }
